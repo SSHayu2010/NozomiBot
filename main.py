@@ -40,7 +40,7 @@ async def on_message(message):
         boss_hp -= 1000
         await message.channel.send(f'A2 Current {boss_hp}')
 
-    if message.content.startswith('!kokkoro'):
+    if message.content.startswith('!kokkoro2'):
         await message.channel.send(embed=embed)
 
 TOKEN = "OTczNDA4NDMxODE1OTQyMTY0.GCHG_r.LFh1560BiLYSMLEXB7qxaYb5n43dT2sjNlYCpw"
