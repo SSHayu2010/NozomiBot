@@ -32,7 +32,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!boss'):
+    if message.content.startswith('!ok'):
         global boss_hp
         await message.channel.send(f'A2 Current {boss_hp}')
 
