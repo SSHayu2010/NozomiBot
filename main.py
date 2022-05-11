@@ -5,7 +5,7 @@ from sys import prefix
 import discord
 from discord.ext import commands
 from discord.commands import Option
-
+from embeds import PHY_CHARACTERS
 
 bot = commands.Bot(command_prefix="!", debug_guilds=[869923009115357215])
 
@@ -31,12 +31,11 @@ async def on_ready():
 
 @bot.slash_command(description="Units - Rank Info")
 async def urank(ctx, character: Option(str)):
-    if character == 'kokkoro':
-        await ctx.respond("Hello! Here's a cool embed.", embed=embed, ephemeral=True)
-    elif character == 'christina':
-        await ctx.respond('Hi Christina', ephemeral=True)
+    character = character.lower()
+    if character in PHY_CHARACTERS:
+        await ctx.respond(embed=PHY_CHARACTERS[character], ephemeral=True)
     else:
-        await ctx.respond('El personaje seleccionado no fue encontrado', ephemeral=True)
+        await ctx.respond(F'El personaje {character} no fue encontrado', ephemeral=True)
 
 
 TOKEN = "OTczNDA4NDMxODE1OTQyMTY0.GCHG_r.LFh1560BiLYSMLEXB7qxaYb5n43dT2sjNlYCpw"

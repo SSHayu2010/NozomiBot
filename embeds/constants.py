@@ -1,0 +1,8 @@
+LAST_UPDATE = '(Abril, 2022)'
+FIVE_STAR = ':star: :star: :star: :star: :star:'
+RANK_INFO = 'Rank Info'
+RANK_LABEL = 'Rank'
+STAR_LABEL = 'Estrellas'
+UE_LEVEL_LABEL = 'Nivel UE'
+NOTES_LABEL = 'Restricciones / Notas adicionales'
+ANNE_BOT_LABEL = 'AnneBot'
