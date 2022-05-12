@@ -1,11 +1,6 @@
 
-from operator import truediv
-from pickle import TRUE
-from sys import prefix
 import discord
 from discord.ext import commands
-from discord.commands import Option
-from embeds import PHY_CHARACTERS
 
 bot = commands.Bot(command_prefix="!", debug_guilds=[869923009115357215])
 
@@ -28,15 +23,7 @@ embed.set_footer(text="AnneBot")
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
 
-
-@bot.slash_command(description="Units - Rank Info")
-async def urank(ctx, character: Option(str)):
-    character = character.lower()
-    if character in PHY_CHARACTERS:
-        await ctx.respond(embed=PHY_CHARACTERS[character], ephemeral=True)
-    else:
-        await ctx.respond(F'El personaje {character} no fue encontrado', ephemeral=True)
-
+bot.load_extension('cogs.ranks')
 
 TOKEN = "OTczNDA4NDMxODE1OTQyMTY0.GCHG_r.LFh1560BiLYSMLEXB7qxaYb5n43dT2sjNlYCpw"
 bot.run(TOKEN)
