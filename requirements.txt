@@ -1,3 +1,4 @@
 py-cord==2.0.0-beta.7
 Flask==2.1.2
 python-dotenv==0.20.0
+python-decouple==3.6
