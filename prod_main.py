@@ -1,11 +1,8 @@
 
-import discord
 from discord.ext import commands
 from webserver import keep_alive
 from decouple import config
 
-TOKEN = config("DISCORD_BOT_SECRET_KEY")
-ENV_NAME = config("ENV_NAME")
 bot = commands.Bot(command_prefix="!", debug_guilds=[869923009115357215])
 
 
@@ -15,7 +12,6 @@ async def on_ready():
 
 bot.load_extension('cogs.ranks')
 
-if ENV_NAME == "production":
-    keep_alive()
-
+keep_alive()
+TOKEN = config("DISCORD_BOT_SECRET_KEY")
 bot.run(TOKEN)
