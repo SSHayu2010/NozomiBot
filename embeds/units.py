@@ -55,8 +55,34 @@ def generate_embeds():
     fields, rows = extract_unit_database_from_csv()
     unit_database = transform_unit_data_to_objects(fields, rows)
     unit_embeds = {}
+    magic_units = []
+    physical_units = []
     for unit_data in unit_database:
         unit_name, embed_unit = generate_embed_for_unit(unit_data)
         unit_embeds[unit_name] = embed_unit
+        if unit_data.get(FIELD_UNIT_TYPE) == UNIT_PHY_TYPE:
+            physical_units.append(unit_name)
+        else:
+            magic_units.append(unit_name)
+    return unit_embeds, physical_units, magic_units
 
-    return unit_embeds
+
+def generate_embed_unit_list(phy_units, magic_units):
+    """Generate a list of units"""
+    phy_units_reformated = 'None\n'
+    for phy_unit in phy_units:
+        phy_units_reformated += f"{refactor_unit_name(phy_unit)}\n"
+
+    magic_units_reformated = 'None\n'
+    for magic_unit in magic_units:
+        magic_units_reformated += f"{refactor_unit_name(magic_unit)}\n"
+
+    embed_list = discord.Embed(
+        title="Lista de personajes - AnneBot",
+        description="Lista de personajes que se pueden consultar:",
+        colour=discord.Colour(0x6cfa4f)
+    )
+    embed_list.add_field(name="Fisicos", value=f'```{phy_units_reformated}```', inline=True)
+    embed_list.add_field(name="Magicos", value=f'```{magic_units_reformated}```', inline=True)
+    embed_list.set_thumbnail(url="https://i.imgur.com/p9U644y.jpg")
+    return embed_list

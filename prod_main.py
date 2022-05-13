@@ -14,5 +14,5 @@ async def on_ready():
 bot.load_extension('cogs.ranks')
 
 keep_alive()
-TOKEN = os.environ.get("DISCORD_BOT_SECRET_KEY")
+TOKEN = config("DISCORD_BOT_SECRET_KEY")
 bot.run(TOKEN)
